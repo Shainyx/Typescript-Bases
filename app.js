@@ -1,3 +1,3 @@
 const msg = 'Hola mundo';
 console.log(msg);
-export {};
+export {}; // Quitar estoy para poder visualizar en consola.
