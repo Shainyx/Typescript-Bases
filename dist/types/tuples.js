@@ -5,4 +5,4 @@
     hero[2] = false;
     console.log(hero);
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};

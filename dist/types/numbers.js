@@ -11,4 +11,4 @@
     avengers = Number('55A');
     console.log({ avengers });
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};

@@ -10,4 +10,4 @@
     console.log(exists);
     console.log(power);
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};

@@ -9,4 +9,4 @@
     console.log(currentAudio);
     console.log(AudioLevel);
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};

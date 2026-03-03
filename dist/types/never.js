@@ -8,4 +8,4 @@
     error('Auxilio!');
     console.log('Hola Mundo');
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};

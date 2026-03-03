@@ -4,4 +4,4 @@
     const villians = ['Omega Rojo', 'Dormammu', 'Duende Verde'];
     villians.forEach(v => console.log(v.toUpperCase()));
 })();
-export {}; // Quitar estoy para poder visualizar en consola.
+export {};
