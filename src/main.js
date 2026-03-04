@@ -6,6 +6,52 @@ define("app", ["require", "exports"], function (require, exports) {
         console.log(msg);
     })();
 });
+define("destructuring/destructuring", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        const avengers = {
+            nick: 'Samuel L. Jackson',
+            ironman: 'Robert Downey Jr.',
+            vision: 'Paul Bettany',
+            activo: true,
+            poder: 1500
+        };
+        // Esta es desestructuración tradicional de objetos
+        // const { poder, vision } = avengers;
+        // console.log(poder.toFixed(2), vision.toUpperCase());
+        // Usando res, ya evita la propiedad desestructurada
+        const printAvenger = ({ ironman, ...args }) => {
+            console.log(ironman, args);
+        };
+        printAvenger(avengers);
+        const avengersArr = ['Cap. America', 'Ironman', 'Hulk'];
+        const [capitan, ironman] = avengersArr; // En desestructuración de arreglos se usa []
+        console.log({ ironman, capitan });
+    })();
+});
+define("for loop/for-of", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        const ironman = {
+            name: 'Ironman',
+            weapon: 'Armorsuit'
+        };
+        const capAmerica = {
+            name: 'Capitan America',
+            weapon: 'Escudo'
+        };
+        const thor = {
+            name: 'Thor',
+            weapon: 'Mjolnir'
+        };
+        const avengers = [ironman, thor, capAmerica];
+        for (const avenger of avengers) {
+            console.log(avenger.name, avenger.weapon);
+        }
+    })();
+});
 define("functions/args-default", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -88,7 +134,7 @@ define("functions/functions", ["require", "exports"], function (require, exports
         const heroName = returnName();
     })();
 });
-define("functions/Test/app", ["require", "exports"], function (require, exports) {
+define("functions/test/app", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     (() => {
@@ -180,7 +226,7 @@ define("objects/union.types", ["require", "exports"], function (require, exports
         console.log(typeof myCustomVariable);
     })();
 });
-define("objects/Test/app", ["require", "exports"], function (require, exports) {
+define("objects/test/app", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     (() => {
