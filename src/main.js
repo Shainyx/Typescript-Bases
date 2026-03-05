@@ -6,6 +6,169 @@ define("app", ["require", "exports"], function (require, exports) {
         console.log(msg);
     })();
 });
+define("classes/abstract", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        class Transformation {
+            constructor(name, power) {
+                this.name = name;
+                this.power = power;
+            }
+        }
+        class Saiyan extends Transformation {
+            worlDomination() {
+                return 'Mundo dominado';
+            }
+        }
+        class Android extends Transformation {
+            defeatSaiyan() {
+                return 'Saiyan derrotados';
+            }
+        }
+        const vegeta = new Saiyan('UltraEgo', 'Super Alto');
+        const cell = new Android('Perfecto', 'Poderoso');
+        // console.log(vegeta);
+        // console.log(cell);
+        const printName = (character) => {
+            console.log(character.name);
+        };
+        /*
+            La clase tiene que ser extendido de la clase abstracta,
+            para poder realizar esta accion
+        */
+        printName(vegeta);
+    })();
+});
+define("classes/basic", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        class Avenger {
+            static getAvAge() {
+                return this.name;
+            }
+            // constructor(name: string, team: string, realName: string) {
+            //     this.name = name;
+            //     this.team = team;
+            //     this.realName = realName;
+            // }
+            /* Forma corta */
+            constructor(name, team, realName) {
+                this.name = name;
+                this.team = team;
+                this.realName = realName;
+            }
+            bio() {
+                return `${this.name} (${this.name})`;
+            }
+        }
+        // private name: string;
+        // private team: string;
+        // public realName?: string | undefined;
+        /* cuando se usa static no es necesario crear el objeto si no la clase como tal */
+        Avenger.avgAge = 35;
+        const antman = new Avenger('Antman', 'Capitan', 'Scott Lang');
+        console.log(antman);
+    })();
+});
+define("classes/extends", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        class Avenger {
+            constructor(name, realName) {
+                this.name = name;
+                this.realName = realName;
+                console.log('Constructor Avenger llamado!');
+            }
+            getFullName() {
+                return `${this.name} ${this.realName}`;
+            }
+        }
+        class Xmen extends Avenger {
+            constructor(name, realName, isMutant) {
+                super(name, realName);
+                this.isMutant = isMutant;
+            }
+            getFullNameFromXmen() {
+                console.log( /*super.getFullName()*/); // Marca el error por que es un private
+            }
+        }
+        const wolverine = new Xmen('Wolverine', 'Logan', true);
+        console.log(wolverine);
+    })();
+});
+define("classes/get-set", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        class WarriorZ {
+            constructor(name, hability) {
+                this.name = name;
+                this.hability = hability;
+                console.log('Constructor Guerrero llamado!');
+            }
+            getFullName() {
+                return `${this.name} - ${this.hability}`;
+            }
+        }
+        class Saiyan extends WarriorZ {
+            constructor(name, hability, useTransformation) {
+                super(name, hability);
+                this.useTransformation = useTransformation;
+            }
+            /* Cuando se usa get, se considera una propiedad */
+            get fullName() {
+                return `${this.name} - ${this.hability}`;
+            }
+            /* Solo se puede usar un parametro */
+            set fullName(name) {
+                if (name.length < 3) {
+                    throw new Error('El nombre debe de ser mayor de 3 letras');
+                }
+                this.name = name;
+            }
+            getFullNameFromSaiyan() {
+                console.log(super.getFullName());
+            }
+        }
+        const goku = new Saiyan('Goku', 'Genkidama', true);
+        /* De esta manera se setea la propiedad */
+        goku.fullName = 'Kakaroto';
+        /* Es una propiedad y no se usa () */
+        console.log(goku.fullName);
+    })();
+});
+define("classes/private-constructor", ["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    (() => {
+        class Apocalipsis {
+            /* Solo puede ser invocado dentro de la misma clase */
+            constructor(name) {
+                this.name = name;
+            }
+            static callApocalipsis() {
+                if (!Apocalipsis.instance) {
+                    Apocalipsis.instance = new Apocalipsis('Soy Apocalipsis');
+                }
+                return Apocalipsis.instance;
+            }
+            changeName(newName) {
+                this.name = newName;
+            }
+        }
+        /* No se instacia como un objeto, llamas a la clase tal cual */
+        const apocalipsis1 = Apocalipsis.callApocalipsis();
+        const apocalipsis2 = Apocalipsis.callApocalipsis();
+        const apocalipsis3 = Apocalipsis.callApocalipsis();
+        apocalipsis1.changeName('Tormenta');
+        console.log(apocalipsis1, apocalipsis2, apocalipsis3); // Salida todos sale el mismo nombre
+        // const apocalipsis = new Apocalipsis('Soy Apocalipsis');
+        // console.log(apocalipsis);
+    })();
+});
 define("destructuring/destructuring", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
